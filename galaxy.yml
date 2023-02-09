@@ -8,7 +8,7 @@ namespace: octupus
 name: o4n_azure_fileshare
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 2.0.2
+version: 2.0.3
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -43,7 +43,7 @@ tags: ["automation","oction", "azure", "octupus"]
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: https://github.com/OctupusCloud/collection_o4n_azure_storagefile
+repository: https://github.com/OctupusCloud/collection_o4n_azure_fileshare
 
 # The URL to any online docs
 documentation: http://docs.example.com
