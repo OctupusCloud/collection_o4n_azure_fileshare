@@ -130,7 +130,7 @@ from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_u
 
 def upload_files(_account_name, _share, _connection_string, _source_path, _source_file, _dest_path):
   found_files = []
-  _dest_path = right_path(_dest_path)
+  _dest_path, print_path = right_path(_dest_path)
   try:
       # get files form local file system
       base_dir = os.getcwd() + "/" + _source_path + "/"
@@ -152,15 +152,15 @@ def upload_files(_account_name, _share, _connection_string, _source_path, _sourc
                 with open(source_path + file_name, "rb") as source_file:
                     file.upload_file(source_file)
             status = True
-            msg_ret = f"Files uploaded to Directory <{_dest_path}> in share <{_share}>"
+            msg_ret = f"Files uploaded to Directory <{print_path}> in share <{_share}>"
         else:
             status = False
-            msg_ret = f"Files not uploaded to Directory <{_dest_path}> in share <{_share}>. No file to upload"
+            msg_ret = f"Files not uploaded to Directory <{print_path}> in share <{_share}>. No file to upload"
       else:
-        msg_ret = f"Files not uploaded to Directory <{_dest_path}>. Error: Share <{_share}> not found"
+        msg_ret = f"Files not uploaded to Directory <{print_path}>. Error: Share <{_share}> not found"
         status = False
   except Exception as error:
-      msg_ret = f"File not uploaded to Directory <{_dest_path}> in share <{_share}>. Error: <{error}>"
+      msg_ret = f"File not uploaded to Directory <{print_path}> in share <{_share}>. Error: <{error}>"
       status = False
 
   return status, msg_ret, found_files

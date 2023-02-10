@@ -132,7 +132,7 @@ from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_u
 def download_files(_account_name, _connection_string, _share, _source_path, _files, _local_path):
     found_files=[]
     # casting some vars
-    _source_path = right_path(_source_path)
+    _source_path, print_path = right_path(_source_path)
     # check if share and path exist in Account Storage
     try:
         status, msg_ret, output=list_shares_in_service(_account_name, _connection_string)
@@ -164,7 +164,7 @@ def download_files(_account_name, _connection_string, _share, _source_path, _fil
                         stream = file.download_file()
                         data.write(stream.readall())
                 status=True
-                msg_ret = f"Files downloaded to Directory <{_local_path}> from path <{_source_path}> in share <{_share}>"
+                msg_ret = f"Files downloaded to Directory <{_local_path}> from path <{print_path}> in share <{_share}>"
             elif len(found_files) == 1:
                 file=share.get_file_client(s_path + found_files[0])
                 # Download the file
@@ -172,12 +172,12 @@ def download_files(_account_name, _connection_string, _share, _source_path, _fil
                     stream = file.download_file()
                     data.write(stream.readall())
                 status = True
-                msg_ret = f"File downloaded to Directory <{_local_path}> from path <{_source_path}> in share <{_share}>. File pattern <{_files}>"
+                msg_ret = f"File downloaded to Directory <{_local_path}> from path <{print_path}> in share <{_share}>. File pattern <{_files}>"
             else:
                 status = False
-                msg_ret = f"Files not downloaded to Directory <{_local_path}> from path <{_source_path}> in share <{_share}>. No file to download, File pattern <{_files}>"
+                msg_ret = f"Files not downloaded to Directory <{_local_path}> from path <{print_path}> in share <{_share}>. No file to download, File pattern <{_files}>"
         else:
-            msg_ret = f"Invalid Directory: <{_source_path}> in File Share <{_share}>"
+            msg_ret = f"Invalid Directory: <{print_path}> in File Share <{_share}>"
             status = False
     except Exception as error:
         msg_ret = f"Files not downloaded to Directory <{_local_path}>. File pattern <{_files}>. Error: <{error}>"

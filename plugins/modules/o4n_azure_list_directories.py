@@ -107,9 +107,9 @@ def main():
     connection_string = module.params.get("connection_string")
     account_name = module.params.get("account_name")
     path = module.params.get("path")
-    path_sub = right_path(path)
+    path_sub, print_path = right_path(path)
 
-    success, msg_ret, output = list_directories_in_share(account_name, connection_string, share, path_sub)
+    success, msg_ret, output = list_directories_in_share(account_name, connection_string, share, path_sub, print_path)
 
     if success:
         module.exit_json(failed=False, msg=msg_ret, content=output)
