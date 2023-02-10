@@ -3,6 +3,11 @@
 Collection o4n_azure_storagefile helps apps to manage Azure FileShare Storage  
 By Ed Scrimaglia
 
+## Required
+
+Ansible >= 2.10  
+Python package azure-storage-file-share >= 12.6.0  
+
 ## Modules
 
 - o4n_azure_manage_share  
