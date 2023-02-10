@@ -8,7 +8,7 @@ namespace: octupus
 name: o4n_azure_fileshare
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 2.0.5
+version: 2.0.6
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -16,12 +16,12 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-- "Ed Scrimaglia <edgardo.scrimaglia@gmail.com>"
+- "Ed Scrimaglia <edscrimaglia@octupus.com>"
 
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
-description: Collection o4n_azure_storagefile helps apps to manage Azure FileShare Storage 
+description: Collection o4n_azure_fileshare helps apps to manage Azure FileShare Storage 
 
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'

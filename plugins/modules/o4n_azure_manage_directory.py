@@ -173,9 +173,9 @@ def create_directory(_connection_string, _share, _directory, _state, _print_path
         msg_ret = f"Error managing Directory <{_print_path}> in share <{_share}>. Error: <{error}>"
         status = False
 
-    return status, msg_ret, _directory
+    return status, msg_ret, _print_path
 
-def create_subdirectory(_connection_string, _share, _directory, _parent_directory, _state, _print_path):
+def create_subdirectory(_connection_string, _share, _directory, _parent_directory, _state, _print_path, _print_path_parent):
     share = ShareClient.from_connection_string(_connection_string, _share)
     action = "none"
     try:
@@ -187,18 +187,18 @@ def create_subdirectory(_connection_string, _share, _directory, _parent_director
             action = "deleted"
             parent_dir.delete_subdirectory(_directory)
         status = True
-        msg_ret = f"Sub Directory <{_directory}> <{action}> under Directory <{_print_path}> in share <{_share}>"
+        msg_ret = f"Sub Directory <{_print_path}> <{action}> under Directory <{_print_path_parent}> in share <{_share}>"
     except aze.ResourceExistsError as error:
         status = False
-        msg_ret = f"Sub Directory <{_directory}> not <{action}> in Parent Directory <{_pare_print_pathnt_directory}>. The Directory already exist>"
+        msg_ret = f"Sub Directory <{_print_path}> not <{action}> in Parent Directory <{_print_path_parent}>. The Directory already exist>"
     except aze.ResourceNotFoundError:
         status = False
-        msg_ret = f"Sub Directory <{_directory}> not <{action}>. Resource <{_print_path}> and/or <{_directory}>in share <{_share}> do not exist>"
+        msg_ret = f"Sub Directory <{_print_path}> not <{action}>. Resource <{_print_path_parent}> and/or <{_print_path}>in share <{_share}> do not exist>"
     except Exception as error:
-        msg_ret = f"Error managing Sub Directory <{_directory}> in Parent Directory <{_print_path}>, share <{_share}>. Error: <{error}>"
+        msg_ret = f"Error managing Sub Directory <{_print_path}> in Parent Directory <{_print_path_parent}>, share <{_share}>. Error: <{error}>"
         status = False
 
-    return status, msg_ret, "/" + _parent_directory + "/"+ _directory
+    return status, msg_ret, _print_path_parent + _print_path
 
 
 def main():
@@ -218,12 +218,12 @@ def main():
     parent_path = module.params.get("parent_path")
     state = module.params.get("state")
     path_sub, print_path = right_path(path)
-    parent_path_sub, print_path = right_path(parent_path)
+    parent_path_sub, print_path_parent = right_path(parent_path)
 
     if not parent_path_sub:
         success, msg_ret, output = create_directory(connection_string, share, path_sub, state, print_path)
     else:
-        success, msg_ret, output = create_subdirectory(connection_string, share, path_sub, parent_path_sub, state, print_path)
+        success, msg_ret, output = create_subdirectory(connection_string, share, path_sub, parent_path_sub, state, print_path, print_path_parent)
 
     if success:
         module.exit_json(failed=False, msg=msg_ret, content=output)
