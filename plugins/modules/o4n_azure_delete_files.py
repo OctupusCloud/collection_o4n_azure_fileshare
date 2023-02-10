@@ -99,10 +99,10 @@ tasks:
 from azure.storage.fileshare import ShareClient
 import azure.core.exceptions as aze
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_list_shares import list_shares_in_service
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_list_files import list_files_in_share
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_select_files_pattern import select_files
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_get_right_path import right_path
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_shares import list_shares_in_service
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_files import list_files_in_share
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_select_files_pattern import select_files
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
 
 def delete_files(_account_name, _connection_string, _share, _path, _files):
     _path, print_path = right_path(_path)

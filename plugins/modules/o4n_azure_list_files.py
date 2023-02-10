@@ -106,8 +106,8 @@ tasks:
 """
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_list_files import list_files_in_share
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_get_right_path import right_path
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_files import list_files_in_share
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
 
 
 def main():

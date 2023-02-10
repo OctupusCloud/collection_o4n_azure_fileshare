@@ -123,9 +123,9 @@ tasks:
 import os
 from azure.storage.fileshare import ShareClient
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_list_shares import list_shares_in_service
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_select_files_pattern import select_files
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_get_right_path import right_path
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_shares import list_shares_in_service
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_select_files_pattern import select_files
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
 
 
 def upload_files(_account_name, _share, _connection_string, _source_path, _source_file, _dest_path):

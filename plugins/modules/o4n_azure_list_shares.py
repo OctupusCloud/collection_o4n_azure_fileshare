@@ -63,7 +63,7 @@ tasks:
 
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.escrimaglia.o4n_azure_storagefile_test.plugins.module_utils.util_list_shares import list_shares_in_service
+from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_shares import list_shares_in_service
 
 
 def main():
