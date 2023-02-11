@@ -150,7 +150,7 @@ def download_files(_account_name, _connection_string, _share, _source_path, _fil
     try:
         # Instantiate the ShareFileClient from a connection string
         share=ShareClient.from_connection_string(_connection_string, _share)
-        status, msg_ret_pattern, files_in_share=list_files_in_share(_account_name, _connection_string, _share, _source_path)
+        status, msg_ret_pattern, files_in_share=list_files_in_share(_account_name, _connection_string, _share, _source_path, print_path)
         if status:
             status, msg_ret, found_files=select_files(_files,
                                         [file['name'] for file in files_in_share if file])
