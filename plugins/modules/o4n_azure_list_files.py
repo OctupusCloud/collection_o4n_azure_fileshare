@@ -38,7 +38,7 @@ options:
     type: string
   path:
     description:
-      path, directory, whose files must be listed
+      path where the files will be listed
     required: false
     type: string
 """

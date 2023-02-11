@@ -33,11 +33,6 @@ options:
       Storage Account -> Access Keys -> Connection String
     required: true
     type: string
-  account_name:
-    description:
-      Storage Account Name Provided by Azure Portal
-    required: true
-    type: string
   state:
     description:
       Create or delete a Directory a Sub Directory
@@ -49,12 +44,12 @@ options:
     default: present
   path:
     description:
-      path, directory, to create or delete
+      directory to create or delete
     required: true
     type: string
   parent_path:
     description:
-      parent path, directory, where directory must be created or deleted
+      full parent path where directory will be created or deleted
     required: false
     type: string
 """

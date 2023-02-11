@@ -51,7 +51,7 @@ options:
       path, local directory where files to be uploaded are 
   dest_path:
     description:
-      path, directory where files must be uploaded
+     path where the files will be downloaded
     required: false
     type: string
 """

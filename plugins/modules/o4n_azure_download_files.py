@@ -57,7 +57,7 @@ options:
     type: string
   local_path:
     description:
-      path, directory, where files must be downloaded
+      path where the files will be downloaded
     required: false
     type: string
 """

@@ -38,7 +38,7 @@ options:
     type: string
   path:
     description:
-      path, directory, whose directories must be listed. If not present, path is the root of the File Share
+      path where the directories will be listed. If not present, path is the root of the File Share
     required: false
     type: string
 """
@@ -88,7 +88,6 @@ tasks:
 
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_shares import list_shares_in_service
 from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_directories import list_directories_in_share
 from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
 

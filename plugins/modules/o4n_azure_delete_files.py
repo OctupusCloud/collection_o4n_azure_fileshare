@@ -38,7 +38,7 @@ options:
     type: string
   path:
     description:
-      path, directory, where files must be deleted
+      path where the files will be deleted
     required: false
     type: string
   files:
