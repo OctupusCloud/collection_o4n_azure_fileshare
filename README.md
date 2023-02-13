@@ -1,6 +1,6 @@
 # Octupus Collection
 
-Collection o4n_azure_storagefile helps apps to manage Azure FileShare Storage  
+Collection o4n_azure_fileshare helps apps to manage Azure FileShare Storage  
 By Ed Scrimaglia
 
 ## Required
