@@ -46,7 +46,7 @@ dependencies: {}
 repository: https://github.com/OctupusCloud/collection_o4n_azure_fileshare
 
 # The URL to any online docs
-documentation: http://docs.example.com
+documentation: https://learn.microsoft.com/en-us/azure/storage/files/storage-files-introduction
 
 # The URL to the homepage of the collection/project
 homepage: https://www.octupus.com/
