@@ -7,8 +7,8 @@ __metaclass__ = type
 
 DOCUMENTATION = """
 ---
-module: o4n_azure_manage_directory
-short_description: Create and Delete Directories and Sub Directory in a share Storage File
+module: o4n_azure_upload_directory
+short_description: Upload a Directories/Sub Directory to a Storage File
 description:
   - Connect to Azure Storage file using connection string method
   - Create a Directory and upload all files in a share in a Storage File account 
