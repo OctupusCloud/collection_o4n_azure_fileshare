@@ -205,9 +205,9 @@ def main():
             share = dict(required=True, type='str'),
             connection_string = dict(required=True, type='str'),
             parent_path = dict(required=False, type='str', default=''),
-            source_path = module.params.get("source_path"),
-            files = module.params.get("files"),
-            dest_path = module.params.get("dest_path")
+            source_path=dict(required=False, type='str', default=''),
+            files=dict(required=True, type='str'),
+            dest_path=dict(required=False, type='str', default='')
         )
     )
 
