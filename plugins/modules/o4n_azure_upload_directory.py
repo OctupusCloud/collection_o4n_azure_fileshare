@@ -8,7 +8,7 @@ __metaclass__ = type
 DOCUMENTATION = """
 ---
 module: o4n_azure_upload_directory
-short_description: Upload a Directories/Sub Directory to a Storage File
+short_description: Upload a Directory/Sub Directory to a Storage File
 description:
   - Connect to Azure Storage file using connection string method
   - Create a Directory and upload all files in a share in a Storage File account 
@@ -29,11 +29,6 @@ options:
       String that include URL & Token to connect to Azure Storage Account. Provided by Azure Portal
       Storage Account -> Access Keys -> Connection String
     required: true
-    type: string
-  parent_path:
-    description:
-      full parent path where directory will be created
-    required: false
     type: string
   source_path:
     description:
@@ -82,30 +77,20 @@ output:
             "o4n_azure_list_directories.py"
         ],
         "failed": false,
-        "msg": "Files uploaded to Directory </dir1> in share <share-to-test2>"
+        "msg": "Files uploaded to Directory </upload-test/test> in share <share-to-test2>"
     }
 """
 
 EXAMPLES = """
 tasks:
   - name: Upload files
-    o4n_azure_upload_files:
-      account_name: "{{ connection_string }}"
-      share: share-to-test
+    o4n_azure_upload_directory:
+      account_name: "{{ account_name }}"
+      share: "automation-filesharing"
       connection_string: "{{ connection_string }}"
-      source_path: /dir1/dir2
-      dest_path: /dir1
-      files: file*.txt
-    register: output
-
-  - name: Upload files
-    o4n_azure_upload_files:
-      account_name: "{{ connection_string }}"
-      share: share-to-test
-      connection_string: "{{ connection_string }}"
-      source_path: /dir1/dir2
-      files: file*.t*
-      dest_path: /dir1/dir2
+      source_path: "./upload_files"
+      files: "*.py"
+      dest_path: "/upload-test/test"
     register: output
 """
 
