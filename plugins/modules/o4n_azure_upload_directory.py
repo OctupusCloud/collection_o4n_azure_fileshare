@@ -121,17 +121,15 @@ from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_s
 from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
 
 def create_directory(_connection_string, _share, _directory, _print_path):
-    action = "none"
+    status = True
     share = ShareClient.from_connection_string(_connection_string, _share)
     try:
         new_directory = share.get_directory_client(directory_path=_directory)
         action = "created"
         new_directory.create_directory()
         msg_ret = f"Directory <{_print_path}> created in share <{_share}>"
-        status = True
         msg_ret = f"Directory <{_print_path}> <{action}> in share <{_share}>"
     except aze.ResourceExistsError:
-        status = False
         msg_ret = f"Directory <{_print_path}> not <{action}>. The Directory already exist>"
     except Exception as error:
         msg_ret = f"Error managing Directory <{_print_path}> in share <{_share}>. Error: <{error}>"
@@ -141,15 +139,13 @@ def create_directory(_connection_string, _share, _directory, _print_path):
 
 def create_subdirectory(_connection_string, _share, _directory, _parent_directory, _print_path, _print_path_parent):
     share = ShareClient.from_connection_string(_connection_string, _share)
-    action = "none"
+    status = True
     try:
         parent_dir = share.get_directory_client(directory_path=_parent_directory)
         action = "created"
         parent_dir.create_subdirectory(_directory)
-        status = True
         msg_ret = f"Sub Directory <{_print_path}> <{action}> under Directory <{_print_path_parent}> in share <{_share}>"
     except aze.ResourceExistsError as error:
-        status = False
         msg_ret = f"Sub Directory <{_print_path}> not <{action}> in Parent Directory <{_print_path_parent}>. The Directory already exist>"
     except aze.ResourceNotFoundError:
         status = False
@@ -215,11 +211,11 @@ def main():
     share = module.params.get("share")
     connection_string = module.params.get("connection_string")
     parent_path = module.params.get("parent_path")
+    dest_path = module.params.get("dest_path")
     path_sub, print_path = right_path(dest_path)
     parent_path_sub, print_path_parent = right_path(parent_path)
     source_path = module.params.get("source_path")
     files = module.params.get("files")
-    dest_path = module.params.get("dest_path")
 
     success = False
     if not parent_path_sub:
