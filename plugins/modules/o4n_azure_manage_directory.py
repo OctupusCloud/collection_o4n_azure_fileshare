@@ -160,7 +160,7 @@ def create_directory(_connection_string, _share, _directory, _state, _print_path
         msg_ret = f"Directory <{_print_path}> <{action}> in share <{_share}>"
     except aze.ResourceExistsError:
         status = False
-        msg_ret = f"Directory <{_print_path}> not <{action}>. The Directory already exist>"
+        msg_ret = f"Directory <{_print_path}> not <{action}>. The Directory already exist or is not empty>"
     except aze.ResourceNotFoundError:
         status = False
         msg_ret = f"Directory <{_print_path}> not <{action}> in share <{_share}>. The Directory does not exist>"
@@ -185,7 +185,7 @@ def create_subdirectory(_connection_string, _share, _directory, _parent_director
         msg_ret = f"Sub Directory <{_print_path}> <{action}> under Directory <{_print_path_parent}> in share <{_share}>"
     except aze.ResourceExistsError as error:
         status = False
-        msg_ret = f"Sub Directory <{_print_path}> not <{action}> in Parent Directory <{_print_path_parent}>. The Directory already exist>"
+        msg_ret = f"Sub Directory <{_print_path}> not <{action}> in Parent Directory <{_print_path_parent}>. The Directory already exist or is not empty>"
     except aze.ResourceNotFoundError:
         status = False
         msg_ret = f"Sub Directory <{_print_path}> not <{action}>. Resource <{_print_path_parent}> and/or <{_print_path}>in share <{_share}> do not exist>"
