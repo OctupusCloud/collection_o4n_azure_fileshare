@@ -11,7 +11,7 @@ module: o4n_azure_upload_directory
 short_description: Upload a Directory/Sub Directory to a Storage File
 description:
   - Connect to Azure Storage file using connection string method
-  - Create a Directory and upload all files in a share in a Storage File account 
+  - Create a Directory/Sub Directory and upload all files in a share in a Storage File account 
 version_added: "2.0"
 author: "Ed Scrimaglia"
 notes:
@@ -185,7 +185,6 @@ def main():
             account_name=dict(required=True, type='str'),
             share = dict(required=True, type='str'),
             connection_string = dict(required=True, type='str'),
-            parent_path = dict(required=False, type='str', default=''),
             source_path=dict(required=False, type='str', default=''),
             files=dict(required=True, type='str'),
             dest_path=dict(required=False, type='str', default='')
@@ -195,19 +194,13 @@ def main():
     account_name = module.params.get("account_name")
     share = module.params.get("share")
     connection_string = module.params.get("connection_string")
-    parent_path = module.params.get("parent_path")
     dest_path = module.params.get("dest_path")
     path_sub, print_path = right_path(dest_path)
-    parent_path_sub, print_path_parent = right_path(parent_path)
     source_path = module.params.get("source_path")
     files = module.params.get("files")
 
     success = False
-    if not parent_path_sub:
-        success, msg_ret, output = create_directory(connection_string, share, path_sub, print_path)
-    else:
-        success, msg_ret, output = create_subdirectory(connection_string, share, path_sub, parent_path_sub, print_path, print_path_parent)
-    
+    success, msg_ret, output = create_directory(connection_string, share, path_sub, print_path)
     if success:
         success, msg_ret, output = upload_files(account_name, share, connection_string, source_path, files, dest_path)
 
