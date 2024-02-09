@@ -34,5 +34,5 @@ Python package azure-storage-file-share >= 12.15.0
 - o4n_azure_delete_files  
   Delete files from any Directory in a File Share  
 
-- o4n_azure_upload_directory
+- o4n_azure_upload_directory  
   Create a Directory/Sub Directory and upload files from a local File System to a file share
