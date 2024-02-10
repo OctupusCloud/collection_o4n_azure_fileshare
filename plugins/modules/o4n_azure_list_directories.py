@@ -88,8 +88,8 @@ tasks:
 
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_list_directories import list_directories_in_share
-from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
+from ..module_utils.util_list_directories import list_directories_in_share
+from ..module_utils.util_get_right_path import right_path
 
 
 def main():

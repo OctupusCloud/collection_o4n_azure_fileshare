@@ -140,7 +140,7 @@ tasks:
 from azure.storage.fileshare import ShareClient
 import azure.core.exceptions as aze
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.octupus.o4n_azure_fileshare.plugins.module_utils.util_get_right_path import right_path
+from ..module_utils.util_get_right_path import right_path
 
 
 
