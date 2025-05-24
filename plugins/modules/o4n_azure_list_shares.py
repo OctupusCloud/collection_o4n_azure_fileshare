@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function, unicode_literals
@@ -19,6 +19,7 @@ notes:
   - Testeado en linux
 requirements:
   - ansible >= 2.10
+  - Establecer `ansible_python_interpreter` a Python 3 si es necesario.
 options:
   connection_string:
     description:
